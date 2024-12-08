@@ -1,0 +1,67 @@
+<html lang="en">
+    <head>
+        <title>Assignment #3</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="./styles/vendor/material.deep_purple-blue.min.css" />
+        <script defer src="./src/vendor/material.min.js"></script>
+        <link rel="stylesheet" href="./styles/index.css" />
+        <script src="./src/vendor/jquery-3.7.1.min.js"></script>
+        <script src="./src/index.js"></script>
+    </head>
+    <body>
+        <!-- Uses a header that scrolls with the text, rather than staying
+            locked at the top -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button">
+                    <i class="material-icons" style="padding: 12px 10px">menu</i>
+                </div>
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">Appliance Maintenance Tracker (AMT)</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation -->
+                    <div
+                        class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right"
+                    >
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="global_search_bar">
+                            <i class="material-icons">search</i>
+                        </label>
+                        <div class="mdl-textfield__expandable-holder">
+                            <input
+                                class="mdl-textfield__input"
+                                type="text"
+                                name="global_search_bar"
+                                id="global_search_bar"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">AMM Menu</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/appliances.html');"
+                        >Appliances</a
+                    >
+                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/calendar.html');"
+                        >Calendar</a
+                    >
+                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/import.export.html');"
+                        >Import/Export</a
+                    >
+                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/settings.html');"
+                        >Settings</a
+                    >
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content"></div>
+            </main>
+            <script>
+                $(".page-content").load("./views/appliances.html");
+            </script>
+        </div>
+    </body>
+</html>

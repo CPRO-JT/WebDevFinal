@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Card Grid Layout with Subpages</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+            }
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+                justify-items: center;
+                padding: 20px;
+            }
+            .card {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                transition: transform 0.3s ease-in-out;
+                width: 100%;
+            }
+            .card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+            .card-content {
+                padding: 20px;
+            }
+            .card h3 {
+                margin: 0;
+                color: #333;
+            }
+            .card p {
+                color: #666;
+                margin: 10px 0;
+            }
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background-color: #f1f1f1;
+            }
+            .card-footer .btn {
+                background-color: #007bff;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .card-footer .btn:hover {
+                background-color: #0056b3;
+            }
+            .card-footer i {
+                color: #007bff;
+                font-size: 20px;
+            }
+            .card:hover {
+                transform: translateY(-10px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card-container">
+            <div
+                class="card"
+                data-title="Card Title 1"
+                data-description="This is a detailed description of card 1."
+                data-image="https://via.placeholder.com/300x200"
+            >
+                <img src="https://via.placeholder.com/300x200" alt="Card Image" />
+                <div class="card-content">
+                    <h3>Card Title 1</h3>
+                    <p>This is a short description of the card content1</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn">Read More</button>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            <div
+                class="card"
+                data-title="Card Title 2"
+                data-description="This is a detailed description of card 2."
+                data-image="https://via.placeholder.com/300x200"
+            >
+                <img src="https://via.placeholder.com/300x200" alt="Card Image" />
+                <div class="card-content">
+                    <h3>Card Title 2</h3>
+                    <p>This is another short description of a different card2</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn">Read More</button>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            <div
+                class="card"
+                data-title="Card Title 3"
+                data-description="This is a detailed description of card 3 for subpage."
+                data-image="https://via.placeholder.com/300x200"
+            >
+                <img src="https://via.placeholder.com/300x200" alt="Card Image" />
+                <div class="card-content">
+                    <h3>Card Title 3</h3>
+                    <p>This is another short description of a different card3</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn">Read More</button>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            <!-- Additional cards can be added here -->
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".btn").on("click", function () {
+                    // Get data attributes from the card
+                    const title = $(this).closest(".card").data("title");
+                    const description = $(this).closest(".card").data("description");
+                    const imageUrl = $(this).closest(".card").data("image");
+
+                    // Construct a URL with query parameters (assuming subpages are dynamically generated)
+                    const subPageUrl = `./views/subpage.html?title=${encodeURIComponent(
+                        title
+                    )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(imageUrl)}`;
+
+                    // Redirect to the new subpage
+                    window.location.href = subPageUrl;
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+[
+    {
+        "itemName": "Fridge",
+        "dateAdded": 1728500000,
+        "dateModified": 1728536126,
+        "itemDetails": {
+            "brand": "Samsung",
+            "serial": "XAGASDGA346",
+            "model": {
+                "name": "Fridge",
+                "number": "A-B-C"
+            },
+            "userDefined": [
+                {
+                    "capacity": "118L"
+                },
+                {
+                    "color": "Stainless Steel"
+                }
+            ]
+        },
+        "tasks": [
+            {
+                "name": "Replace Water Filter",
+                "description": "Takes model FLTR-0123 from Home Depot.",
+                "type": "monthly",
+                "frequency": 4
+            },
+            {
+                "name": "Clean Exterior",
+                "description": "Wipe down the outside",
+                "type": "once",
+                "when": 1735671600
+            }
+        ]
+    },
+    {
+        "itemName": "Fridge",
+        "dateAdded": 1728500000,
+        "dateModified": 1728536126,
+        "itemDetails": {
+            "brand": "Samsung",
+            "serial": "XAGASDGA346",
+            "model": {
+                "name": "Fridge",
+                "number": "A-B-C"
+            },
+            "userDefined": [
+                {
+                    "capacity": "118L"
+                },
+                {
+                    "color": "Stainless Steel"
+                }
+            ]
+        },
+        "tasks": [
+            {
+                "name": "Replace Water Filter",
+                "description": "Takes model FLTR-0123 from Home Depot.",
+                "type": "monthly",
+                "frequency": 4
+            },
+            {
+                "name": "Clean Exterior",
+                "description": "Wipe down the outside",
+                "type": "once",
+                "when": 1735671600
+            }
+        ]
+    },
+    {
+        "itemName": "Fridge",
+        "dateAdded": 1728500000,
+        "dateModified": 1728536126,
+        "itemDetails": {
+            "brand": "Samsung",
+            "serial": "XAGASDGA346",
+            "model": {
+                "name": "Fridge",
+                "number": "A-B-C"
+            },
+            "userDefined": [
+                {
+                    "capacity": "118L"
+                },
+                {
+                    "color": "Stainless Steel"
+                }
+            ]
+        },
+        "tasks": [
+            {
+                "name": "Replace Water Filter",
+                "description": "Takes model FLTR-0123 from Home Depot.",
+                "type": "monthly",
+                "frequency": 4
+            },
+            {
+                "name": "Clean Exterior",
+                "description": "Wipe down the outside",
+                "type": "once",
+                "when": 1735671600
+            }
+        ]
+    }
+]
