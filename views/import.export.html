@@ -1,1 +1,31 @@
-<h3>Import/Export Page!</h3>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV Upload</title>
+    <link rel="stylesheet" href="../WebFinal/styles/import.css"></link>
+    
+  </head>
+  <body>
+    <h1>Upload CSV File</h1>
+    <input type="file" id="csvFileInput" />
+    <script>
+      document.getElementById("csvFileInput").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const content = event.target.result;
+            const rows = content.split("\n").map((row) => row.split(","));
+            
+            // Pass the CSV data to another page using URL parameters
+            const csvData = encodeURIComponent(JSON.stringify(rows));
+            window.location.href = `./anotherPage.html?data=${csvData}`;
+          };
+          reader.readAsText(file);
+        }
+      });
+    </script>
+  </body>
+</html>

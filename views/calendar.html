@@ -1,1 +1,24 @@
-<h3>Calendar Page!</h3>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Task Calendar</title>
+        <link rel="stylesheet" href="../WebFinal/styles/calendar.css" />
+    </head>
+    <body>
+        <div class="calendar-container">
+            <header>
+                <button id="prevMonth">&lt;</button>
+                <h1 id="monthYear"></h1>
+                <button id="nextMonth">&gt;</button>
+            </header>
+            <div class="calendar" id="calendar"></div>
+            <div class="tasks">
+                <h5>Tasks for <span id="selectedDate">Select a Day</span></h5>
+                <ul id="taskList"></ul>
+            </div>
+        </div>
+        <script src="../WebFinal/src/calendar.js"></script>
+    </body>
+</html>

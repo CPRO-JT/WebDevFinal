@@ -1,1 +1,70 @@
-<h3>Settings Page!</h3>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="../WebFinal/styles/vendor/material.deep_purple-blue.min.css" />
+        <script src="../WebFinal/src/vendor/material.min.js"></script>
+        <link rel="stylesheet" href="../WebFinal/styles/index.css" />
+        <script src="../WebFinal/src/vendor/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 300px; margin: 0 auto">
+            <div id="WebSocketStatus"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="WebSocketClientIP" />
+                <label class="mdl-textfield__label" for="WebSocketClientIP">WebSocket IP</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input
+                    class="mdl-textfield__input"
+                    type="text"
+                    pattern="-?[0-9]*(\.[0-9]+)?"
+                    id="WebSocketClientPort"
+                />
+                <label class="mdl-textfield__label" for="WebSocketClientPort">WebSocket Port</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="WebSocketClientPath" />
+                <label class="mdl-textfield__label" for="WebSocketClientPath">WebSocket Path</label>
+            </div>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="WebSocketClientProtocol">
+                <input type="checkbox" id="WebSocketClientProtocol" class="mdl-switch__input" />
+                <span class="mdl-switch__label">Secure WebSocket?</span>
+            </label>
+            <button id="Settings_Save" onclick="javascript:ApplySettings"></button>
+        </div>
+        <script>
+            $("#WebSocketStatus").text(
+                `IP: ${localStorage.getItem("AMT_ServerIP")}
+                Port: ${localStorage.getItem("AMT_ServerPort")}
+                Path: ${localStorage.getItem("AMT_ServerPath")}
+                Protocol: ${localStorage.getItem("AMT_ServerProtocol")}`
+            );
+
+            const WebSocketClientSettings = {
+                ServerIP: document.getElementById("WebSocketClientIP").value,
+                ServerPort: document.getElementById("WebSocketClientIP").value,
+                ServerPath: document.getElementById("WebSocketClientIP").value,
+                ServerProtocol: document.getElementById("WebSocketClientIP").value == "on" ? "wss" : "ws",
+            };
+
+            function ApplySettings() {
+                AMT.WS.Settings.ServerIP = WebSocketClientSettings.ServerIP;
+                AMT.WS.Settings.ServerPort = WebSocketClientSettings.ServerPort;
+                AMT.WS.Settings.ServerPath = WebSocketClientSettings.ServerPath;
+                AMT.WS.Settings.ServerProtocol = WebSocketClientSettings.ServerProtocol;
+                AMT.WS.SaveSettings();
+            }
+        </script>
+    </body>
+</html>
+
+<!--
+    WebSocket Client IP
+    WebSocket Client Port
+    WebSocket Client Path
+    WebSocket Client Protocol
+    Clear Storage
+    Reconnect to AMT Desktop
+    Reconnect timeout 
+-->

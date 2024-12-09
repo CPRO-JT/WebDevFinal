@@ -1,0 +1,82 @@
+body,
+html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #f0f4f8;
+}
+
+.calendar-container {
+    width: 70%;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /*border-radius: 8px;*/
+    overflow: hidden;
+    justify-self: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: #673ab7;
+    color: #fff;
+}
+
+header button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #ddd;
+    padding: 1px;
+}
+
+.calendar div {
+    padding: 30px;
+    background: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar div:hover {
+    background: #f0f4f8;
+}
+
+.calendar .today {
+    background: #673ab7;
+    color: #fff;
+}
+
+.tasks {
+    padding: 16px;
+}
+
+.tasks h5 {
+    margin-top: 0;
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+}
+
+#taskList li {
+    background: #7740d9;
+    color: #fff;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 4px;
+}

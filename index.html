@@ -1,12 +1,12 @@
 <html lang="en">
     <head>
-        <title>Assignment #3</title>
+        <title>Appliance Maintenance Tracker Web</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link rel="stylesheet" href="./styles/vendor/material.deep_purple-blue.min.css" />
-        <script defer src="./src/vendor/material.min.js"></script>
-        <link rel="stylesheet" href="./styles/index.css" />
-        <script src="./src/vendor/jquery-3.7.1.min.js"></script>
-        <script src="./src/index.js"></script>
+        <link rel="stylesheet" href="../WebFinal/styles/vendor/material.deep_purple-blue.min.css" />
+        <script defer src="../WebFinal/src/vendor/material.min.js"></script>
+        <link rel="stylesheet" href="../WebFinal/styles/index.css" />
+        <script src="../WebFinal/src/vendor/jquery-3.7.1.min.js"></script>
+        <script src="../WebFinal/src/index.js"></script>
     </head>
     <body>
         <!-- Uses a header that scrolls with the text, rather than staying
@@ -42,16 +42,24 @@
             <div class="mdl-layout__drawer">
                 <span class="mdl-layout-title">AMM Menu</span>
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/appliances.html');"
+                    <a
+                        class="mdl-navigation__link"
+                        onclick="$('.page-content').load('../WebFinal/views/appliances.html');"
                         >Appliances</a
                     >
-                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/calendar.html');"
+                    <a
+                        class="mdl-navigation__link"
+                        onclick="$('.page-content').load('../WebFinal/views/calendar.html');"
                         >Calendar</a
                     >
-                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/import.export.html');"
+                    <a
+                        class="mdl-navigation__link"
+                        onclick="$('.page-content').load('../WebFinal/views/import.export.html');"
                         >Import/Export</a
                     >
-                    <a class="mdl-navigation__link" onclick="$('.page-content').load('./views/settings.html');"
+                    <a
+                        class="mdl-navigation__link"
+                        onclick="$('.page-content').load('../WebFinal/views/settings.html');"
                         >Settings</a
                     >
                 </nav>
@@ -60,7 +68,8 @@
                 <div class="page-content"></div>
             </main>
             <script>
-                $(".page-content").load("./views/appliances.html");
+                $(".page-content").load("../WebFinal/views/appliances.html");
+                //$(".page-content").load("../WebFinal/views/settings.html");
             </script>
         </div>
     </body>
