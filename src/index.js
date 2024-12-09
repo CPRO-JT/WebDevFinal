@@ -51,14 +51,16 @@ class AMTWebSocketClient {
     // Declare the variable that will hold the WebSocket object
     Client;
 
+    FailCount = 0;
+
     constructor() {
         // Seal the defaults so they cannot be accidentally modified and are reliable defaults
         Object.seal(this.Defaults);
         //console.log(Object.keys(AMTWebSocketClient));
-        // Load the WS Settings
-        this.LoadSettings();
         // Validate the WS Settings
         this.ValidateSettings();
+        // Load the WS Settings
+        this.LoadSettings();
         // Connect to the WebSocketServer, storing the connection to the class Client variable
         this.Client = new WebSocket(
             `${this.Settings.ServerProtocol}://${this.Settings.ServerIP}:${this.Settings.ServerPort}/${this.Settings.ServerPath}`
@@ -151,6 +153,7 @@ class AMTWebSocketClient {
         console.log(`WS Event | Open: ${JSON.stringify(event)}`);
         this.SaveSettings(); // The current settings must be correct as we just connected successfully
         this.Client.send("Hello from AMT Web!"); // send a hello to the Desktop App
+        this.FailCount--;
     };
 
     // WebSocket onmessage event handler
@@ -204,6 +207,8 @@ class AMTWebSocketClient {
 
     // WebSocket onclose event handler
     OnClose = (event) => {
+        if (this.FailCount >= 5) return;
+        this.FailCount++;
         //alert("WS: Closed.");
         console.log(`WS Event | Close:\n\n${JSON.stringify(event)}}`);
         setTimeout(() => {

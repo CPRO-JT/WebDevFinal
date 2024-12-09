@@ -2,8 +2,9 @@
     <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link rel="stylesheet" href="../WebFinal/styles/vendor/material.deep_purple-blue.min.css" />
-        <script src="../WebFinal/src/vendor/material.min.js"></script>
         <link rel="stylesheet" href="../WebFinal/styles/index.css" />
+        <script src="../WebFinal/src/settings.js"></script>
+        <script src="../WebFinal/src/vendor/material.min.js"></script>
         <script src="../WebFinal/src/vendor/jquery-3.7.1.min.js"></script>
     </head>
     <body>
@@ -62,63 +63,24 @@
             <button
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                 id="Settings_Save"
-                onclick="javascript:ApplySettings"
+                onclick="ApplySettings()"
             >
                 Apply Settings
             </button>
             <button
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                 id="Settings_ClearLocalStorage"
-                onclick="javascript:ApplySettings"
+                onclick="javascript:ApplySettings()"
             >
                 Clear Local Storage
             </button>
             <button
                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
                 id="Settings_Reconnect"
-                onclick="javascript:ApplySettings"
+                onclick="javascript:ApplySettings()"
             >
                 Reconnect to AMT Desktop
             </button>
         </div>
-        <script>
-            document.getElementById("WSStatusIP").innerHTML = "IP: " + localStorage.getItem("AMT_ServerIP");
-            document.getElementById("WSStatusPort").innerHTML = "Port: " + localStorage.getItem("AMT_ServerPort");
-            document.getElementById("WSStatusPath").innerHTML = "Path: " + localStorage.getItem("AMT_ServerPath");
-            document.getElementById("WSStatusProtocol").innerHTML =
-                "Protocol: " + localStorage.getItem("AMT_ServerProtocol");
-
-            const WebSocketClientSettings = {
-                ServerIP: document.getElementById("WebSocketClientIP").value,
-                ServerPort: document.getElementById("WebSocketClientIP").value,
-                ServerPath: document.getElementById("WebSocketClientIP").value,
-                ServerProtocol: document.getElementById("WebSocketClientIP").value == "on" ? "wss" : "ws",
-            };
-
-            function ApplySettings() {
-                let settings = [
-                    [AMT.WS.Settings.ServerIP, WebSocketClientSettings.ServerIP],
-                    [AMT.WS.Settings.ServerPort, WebSocketClientSettings.ServerPort],
-                    [AMT.WS.Settings.ServerPath, WebSocketClientSettings.ServerPath],
-                    [AMT.WS.Settings.ServerProtocol, WebSocketClientSettings.ServerProtocol],
-                ];
-                for (let idx in settings) {
-                    let setting = settings[idx];
-                    if (setting[1] != "") setting[0] = setting[1];
-                    else continue;
-                }
-                AMT.WS.SaveSettings();
-            }
-        </script>
     </body>
 </html>
-
-<!--
-    WebSocket Client IP
-    WebSocket Client Port
-    WebSocket Client Path
-    WebSocket Client Protocol
-    Clear Storage
-    Reconnect to AMT Desktop
-    Reconnect timeout 
--->
