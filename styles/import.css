@@ -1,4 +1,4 @@
-body {
+main {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     text-align: center;
@@ -17,5 +17,3 @@ body {
 #csvFileInput:hover {
     background-color: #0056b3;
 }
-
-/*burhhhhh*/

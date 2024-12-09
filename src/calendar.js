@@ -5,6 +5,7 @@ $(document).ready(function () {
     const $taskList = $("#taskList");
     const $selectedDate = $("#selectedDate");
 
+    // map and group all tasks based on DueDate
     const GetTasks = () => {
         AMT.GetTasks();
         let AllTasks = AMT.Tasks.map((value) => {
@@ -20,20 +21,8 @@ $(document).ready(function () {
         return Object.groupBy(AllTasks, ({ DueDate }) => DueDate);
     };
 
+    // get task array
     const tasks = GetTasks();
-    //console.log(tasks);
-    //get tasks from appliance objects and insert here
-    const ttemp = {
-        "2024-12-08": [
-            { task: "Task 1", time: "2:00pm" },
-            { task: "Task 2", time: "1:30am" },
-        ],
-        "2024-12-10": [{ task: "Task 3", time: "0:00" }],
-        "2024-12-15": [
-            { task: "Task 4", time: "12:00pm" },
-            { task: "Task 5", time: "2:00pm" },
-        ],
-    };
 
     //gets current date
     let currentDate = new Date();

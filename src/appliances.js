@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Sample data for the cards
+    // create Card Data from Appliance Data for use in displaying on page
     const cardData = (ApplianceData) => {
         let result = [];
         for (let Appliance of ApplianceData) {
@@ -12,36 +12,17 @@ $(document).ready(function () {
         return result;
     };
 
-    let temp = [
-        {
-            title: "Card Title 1",
-            description: "This is a detailed description of card 1.",
-            image: "https://via.placeholder.com/300x200",
-        },
-        {
-            title: "Card Title 2",
-            description: "This is a detailed description of card 2.",
-            image: "https://via.placeholder.com/300x200",
-        },
-        {
-            title: "Card Title 3",
-            description: "This is a detailed description of card 3.",
-            image: "https://via.placeholder.com/300x200",
-        },
-        {
-            title: "Card Title 4",
-            description: "This is a detailed description of card 4.",
-            image: "https://via.placeholder.com/300x200",
-        },
-    ];
-
     // Generate cards dynamically
     const $cardContainer = $(".card-container");
 
+    // Ask AMT to SyncWithDesktop and callback to DesktopSync when complete
     AMT.SyncWithDesktop(DesktopSync);
 
+    // Just a callback wrapper, no other reason for it to be a function
     function DesktopSync() {
+        // get card data and loop through all of it
         cardData(AMT.Appliances).forEach((card) => {
+            // declare the html template we will use with the card data
             const cardHtml = `
                 <div class="card" data-title="${card.title}" data-description="${card.description}" data-image="${
                 card.image
@@ -55,6 +36,7 @@ $(document).ready(function () {
                         <button class="btn">Read More</button>
                     </div>
                 </div>`;
+            // append the card html fragment to the container
             $cardContainer.append(cardHtml);
         });
 
