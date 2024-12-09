@@ -96,10 +96,17 @@
             };
 
             function ApplySettings() {
-                AMT.WS.Settings.ServerIP = WebSocketClientSettings.ServerIP;
-                AMT.WS.Settings.ServerPort = WebSocketClientSettings.ServerPort;
-                AMT.WS.Settings.ServerPath = WebSocketClientSettings.ServerPath;
-                AMT.WS.Settings.ServerProtocol = WebSocketClientSettings.ServerProtocol;
+                let settings = [
+                    [AMT.WS.Settings.ServerIP, WebSocketClientSettings.ServerIP],
+                    [AMT.WS.Settings.ServerPort, WebSocketClientSettings.ServerPort],
+                    [AMT.WS.Settings.ServerPath, WebSocketClientSettings.ServerPath],
+                    [AMT.WS.Settings.ServerProtocol, WebSocketClientSettings.ServerProtocol],
+                ];
+                for (let idx in settings) {
+                    let setting = settings[idx];
+                    if (setting[1] != "") setting[0] = setting[1];
+                    else continue;
+                }
                 AMT.WS.SaveSettings();
             }
         </script>

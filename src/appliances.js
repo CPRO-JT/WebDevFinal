@@ -16,12 +16,21 @@ $(document).ready(function () {
     const $cardContainer = $(".card-container");
 
     // Ask AMT to SyncWithDesktop and callback to DesktopSync when complete
-    AMT.SyncWithDesktop(DesktopSync);
+    try {
+        AMT.SyncWithDesktop(DesktopSync);
+    } catch (e) {
+        console.error(e);
+        DesktopSync();
+    }
 
     // Just a callback wrapper, no other reason for it to be a function
     function DesktopSync() {
+        let CardData = [...AMT.Appliances];
+        if (CardData < 1) {
+            CardData = JSON.parse(localStorage.getItem("AMT_Appliances"));
+        }
         // get card data and loop through all of it
-        cardData(AMT.Appliances).forEach((card) => {
+        cardData(CardData).forEach((card) => {
             // declare the html template we will use with the card data
             const cardHtml = `
                 <div class="card" data-title="${card.title}" data-description="${card.description}" data-image="${
@@ -52,5 +61,9 @@ $(document).ready(function () {
             )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}`;
             window.location.href = subPageUrl;
         });
+
+        if (AMT.Appliances.length > 0) {
+            localStorage.setItem("AMT_Appliances", JSON.stringify(AMT.Appliances));
+        }
     }
 });

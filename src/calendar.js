@@ -22,7 +22,9 @@ $(document).ready(function () {
     };
 
     // get task array
-    const tasks = GetTasks();
+    let tasks = GetTasks();
+    if (Object.keys(tasks).length > 0) localStorage.setItem("AMT_Tasks", JSON.stringify(tasks));
+    else tasks = JSON.parse(localStorage.getItem("AMT_Tasks"));
 
     //gets current date
     let currentDate = new Date();

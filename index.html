@@ -34,6 +34,7 @@
                                 type="text"
                                 name="global_search_bar"
                                 id="global_search_bar"
+                                onkeypress="javascript:search()"
                             />
                         </div>
                     </div>
@@ -52,11 +53,11 @@
                         onclick="$('.page-content').load('../WebFinal/views/calendar.html');"
                         >Calendar</a
                     >
-                    <a
+                    <!--<a
                         class="mdl-navigation__link"
                         onclick="$('.page-content').load('../WebFinal/views/import.export.html');"
                         >Import/Export</a
-                    >
+                    >-->
                     <a
                         class="mdl-navigation__link"
                         onclick="$('.page-content').load('../WebFinal/views/settings.html');"
@@ -70,6 +71,20 @@
             <script>
                 $(".page-content").load("../WebFinal/views/appliances.html");
                 //$(".page-content").load("../WebFinal/views/settings.html");
+                function search() {
+                    let searchText = document.getElementById("global_search_bar").value;
+                    let cardContainer = document.getElementsByClassName("card-container")[0];
+                    cardContainer.childNodes.forEach((value) => {
+                        if (value.nodeType != 1) return;
+                        if (
+                            value.getAttribute("data-title").toLowerCase().includes(searchText.toLowerCase()) == false
+                        ) {
+                            value.style.opacity = 0;
+                        } else {
+                            value.style.opacity = 100;
+                        }
+                    });
+                }
             </script>
         </div>
     </body>
