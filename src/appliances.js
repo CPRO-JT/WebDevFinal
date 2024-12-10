@@ -75,22 +75,16 @@ $(document).ready(function () {
             localStorage.setItem("AMT_Appliances", JSON.stringify(AMT.Appliances));
         }
 
-        // ADD IMAGE *******************
         $(document).on("click", "#card-image", function () {
-            //prompt
-            const userInput = prompt("Please enter image URL:");
-
-            var newImageURL = userInput;
-
-            // Get the parent card element and extract its data attributes
+            // Prompt user for the image URL
+            const userInput = prompt("Please enter the new image URL:");
+        
             const $card = $(this).closest(".card");
+        
 
-            const image = $card.data("image");
-
-            image = newImageURL;
-
-            $card.attr('src','newImageURL');
+            $card.find("img").attr("src", userInput);
         });
+        
 
         // Save appliance data to localStorage for fallback usage
         if (AMT.Appliances.length > 0) {
