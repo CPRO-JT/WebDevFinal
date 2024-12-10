@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Function to transform Appliance Data into a format suitable for displaying as cards
-    const cardData = (ApplianceData) => {
+    let cardData = (ApplianceData) => {
         let result = [];
         for (let Appliance of ApplianceData) {
             // Create a card object for each appliance with title, description, and placeholder image
@@ -38,7 +38,7 @@ $(document).ready(function () {
         // Transform appliance data into card data and generate HTML for each card
         cardData(CardData).forEach((card, index) => {
             // HTML template for each card
-            const cardHtml = `
+            let cardHtml = `
                 <div class="card" data-title="${card.title}" data-description="${card.description}" data-image="${
                 card.image}" card-index="${index}">
                     <img src="${card.image}" alt="Card Image" id="card-image" />
@@ -60,10 +60,10 @@ $(document).ready(function () {
             const $card = $(this).closest(".card");
             const title = $card.data("title");
             const description = $card.data("description");
-            const image = $card.data("image");
+            let image = $card.data("image");
 
             // Construct the URL for the subpage with the card's details as query parameters
-            const subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
+            let subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
                 title
             )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}`;
             // Navigate to the subpage
@@ -77,9 +77,9 @@ $(document).ready(function () {
 
         $(document).on("click", "#card-image", function () {
             // Prompt user for the image URL
-            const userInput = prompt("Please enter the new image URL:");
+            let userInput = prompt("Please enter the new image URL:");
         
-            const $card = $(this).closest(".card");
+            let $card = $(this).closest(".card");
         
 
             $card.find("img").attr("src", userInput);
