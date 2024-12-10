@@ -88,6 +88,8 @@ $(document).ready(function () {
             const image = $card.data("image");
 
             image = newImageURL;
+
+            $card.attr('src','newImageURL');
         });
 
         // Save appliance data to localStorage for fallback usage
