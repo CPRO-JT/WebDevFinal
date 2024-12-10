@@ -61,15 +61,17 @@ $(document).ready(function () {
             let $card = $(this).closest(".card");
             const title = $card.data("title");
             const description = $card.data("description");
-            let image = $card.find("img").attr("src");
+            let image = $card.find("img");
+            let imagesrc = image.getAttribute("src");
 
             // Construct the URL for the subpage with the card's details as query parameters
             let subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
                 title
-            )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}`;
+            )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(imagesrc)}`;
             // Navigate to the subpage
             window.location.href = subPageUrl;
         });
+
         $(document).on("click", "#card-image", function () {
             // Prompt user for the image URL
             let userInput = prompt("Please enter the new image URL:");
