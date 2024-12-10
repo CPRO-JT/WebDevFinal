@@ -5,6 +5,7 @@ $(document).ready(function () {
         for (let Appliance of ApplianceData) {
             // Create a card object for each appliance with title, description, and placeholder image
             result.push({
+                index: ApplianceData.indexOf(Appliance),
                 title: Appliance.Name,
                 description: Appliance.Details,
                 image: "https://via.placeholder.com/300x200", // Placeholder image
@@ -69,12 +70,6 @@ $(document).ready(function () {
             // Navigate to the subpage
             window.location.href = subPageUrl;
         });
-
-        // Save appliance data to localStorage for fallback usage
-        if (AMT.Appliances.length > 0) {
-            localStorage.setItem("AMT_Appliances", JSON.stringify(AMT.Appliances));
-        }
-
         $(document).on("click", "#card-image", function () {
             // Prompt user for the image URL
             let userInput = prompt("Please enter the new image URL:");
@@ -83,12 +78,15 @@ $(document).ready(function () {
         
 
             $card.find("img").attr("src", userInput);
+
+            result[Appliance.index].image = userInput;
         });
-        
+
 
         // Save appliance data to localStorage for fallback usage
         if (AMT.Appliances.length > 0) {
             localStorage.setItem("AMT_Appliances", JSON.stringify(AMT.Appliances));
         }
+
     }
 });
