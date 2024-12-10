@@ -62,7 +62,7 @@ $(document).ready(function () {
             const title = $card.data("title");
             const description = $card.data("description");
             let image = $card.find("img");
-            let imagesrc = image.getAttribute("src");
+            let imagesrc = image.src;
 
             // Construct the URL for the subpage with the card's details as query parameters
             let subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
@@ -81,7 +81,6 @@ $(document).ready(function () {
 
             $card.find("img").attr("src", userInput);
 
-            result[Appliance.index].image = userInput;
         });
 
 
