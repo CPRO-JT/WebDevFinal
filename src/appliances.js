@@ -58,10 +58,10 @@ $(document).ready(function () {
         // Add a click event listener to the "Read More" buttons for navigation
         $(document).on("click", ".btn", function () {
             // Get the parent card element and extract its data attributes
-            const $card = $(this).closest(".card");
+            let $card = $(this).closest(".card");
             const title = $card.data("title");
             const description = $card.data("description");
-            let image = $card.data("image");
+            let image = $card.find("image");
 
             // Construct the URL for the subpage with the card's details as query parameters
             let subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
