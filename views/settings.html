@@ -1,11 +1,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link rel="stylesheet" href="../WebFinal/styles/vendor/material.deep_purple-blue.min.css" />
-        <link rel="stylesheet" href="../WebFinal/styles/index.css" />
-        <script src="../WebFinal/src/settings.js"></script>
-        <script src="../WebFinal/src/vendor/material.min.js"></script>
-        <script src="../WebFinal/src/vendor/jquery-3.7.1.min.js"></script>
+        <link rel="stylesheet" href="../WebFinalNonGit/styles/vendor/material.deep_purple-blue.min.css" />
+        <script src="../WebFinalNonGit/src/settings.js"></script>
+        <script src="../WebFinalNonGit/src/vendor/material.min.js"></script>
+        <script src="../WebFinalNonGit/src/vendor/jquery-3.7.1.min.js"></script>
     </head>
     <body>
         <div style="display: flex; flex-direction: column; gap: 16px; width: 300px; margin: 0 auto">
@@ -60,24 +59,20 @@
                 <label class="mdl-textfield__label" for="WebSocketReconnectTimeout">Reconnect Timeout</label>
                 <span class="mdl-textfield__error">Input is not a number!</span>
             </div>
-            <button
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-                id="Settings_Save"
-                onclick="ApplySettings()"
-            >
+            <button class="mdl-button mdl-button--raised" id="Settings_Save" onclick="ApplySettings()">
                 Apply Settings
             </button>
             <button
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                class="mdl-button mdl-button--raised"
                 id="Settings_ClearLocalStorage"
-                onclick="javascript:ApplySettings()"
+                onclick="javascript:ClearLocalStorage()"
             >
                 Clear Local Storage
             </button>
             <button
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+                class="mdl-button mdl-button--raised"
                 id="Settings_Reconnect"
-                onclick="javascript:ApplySettings()"
+                onclick="javascript:ReconnectToAMTDesktop()"
             >
                 Reconnect to AMT Desktop
             </button>
