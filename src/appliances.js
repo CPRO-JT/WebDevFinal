@@ -36,13 +36,12 @@ $(document).ready(function () {
         }
 
         // Transform appliance data into card data and generate HTML for each card
-        cardData(CardData).forEach((card) => {
+        cardData(CardData).forEach((card, index) => {
             // HTML template for each card
             const cardHtml = `
                 <div class="card" data-title="${card.title}" data-description="${card.description}" data-image="${
-                card.image
-            }">
-                    <img src="${card.image}" alt="Card Image" />
+                card.image}" card-index="${index}">
+                    <img src="${card.image}" alt="Card Image" id="card-image" />
                     <div class="card-content">
                         <h3>${card.title}</h3>
                         <p>${card.description.substring(0, 50)}...</p> 
@@ -51,7 +50,7 @@ $(document).ready(function () {
                         <button class="btn">Read More</button>
                     </div>
                 </div>`;
-            // Append the generated card to the container
+            // Append the generated card to the container //CARD IMAGE ID
             $cardContainer.append(cardHtml);
         });
 
@@ -69,6 +68,26 @@ $(document).ready(function () {
             )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}`;
             // Navigate to the subpage
             window.location.href = subPageUrl;
+        });
+
+        // Save appliance data to localStorage for fallback usage
+        if (AMT.Appliances.length > 0) {
+            localStorage.setItem("AMT_Appliances", JSON.stringify(AMT.Appliances));
+        }
+
+        // ADD IMAGE *******************
+        $(document).on("click", "#card-image", function () {
+            //prompt
+            const userInput = prompt("Please enter image URL:");
+
+            var newImageURL = userInput;
+
+            // Get the parent card element and extract its data attributes
+            const $card = $(this).closest(".card");
+
+            const image = $card.data("image");
+
+            image = newImageURL;
         });
 
         // Save appliance data to localStorage for fallback usage

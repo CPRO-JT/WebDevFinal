@@ -38,6 +38,7 @@
         <img id="card-image" src="" alt="">
         <h1 id="card-title"></h1>
         <p id="card-description"></p>
+        <button class="main-page-btn">Home</button>
     </div>
 
     <script>
@@ -51,6 +52,12 @@
     document.getElementById('card-title').textContent = title;
     document.getElementById('card-description').textContent = description;
     document.getElementById('card-image').src = imageUrl;
+
+    // HOME PAGE
+    $(document).on("click", ".main-page-btn", function () {
+            const subPageUrl = `C:\Users\wettl\OneDrive\Desktop\WebDevFinal\index.html`
+            window.location.href = subPageUrl;
+        });
     </script>
 </body>
 </html>
