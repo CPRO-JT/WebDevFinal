@@ -61,7 +61,7 @@ $(document).ready(function () {
             let $card = $(this).closest(".card");
             const title = $card.data("title");
             const description = $card.data("description");
-            let image = $card.find("image");
+            let image = $card.find("img src");
 
             // Construct the URL for the subpage with the card's details as query parameters
             let subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
