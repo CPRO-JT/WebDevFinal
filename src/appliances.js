@@ -61,15 +61,23 @@ $(document).ready(function () {
             let $card = $(this).closest(".card");
             const title = $card.data("title");
             const description = $card.data("description");
-            let image = JSON.stringify($card.find("img.src"));
+            /*let image = JSON.stringify($card.find("img"));
             console.log(image);
             console.log(image.src);
-            let imagesrc = image.src;
+            let imagesrc = image.src;*/
+            let $image = $card.find("img").first();
+
+            // Log the image element and its src
+            console.log($image);
+            console.log($image.attr("src"));
+
+            // Now you can get the src like this:
+            let imagesrc = $image.attr("src");
 
             // Construct the URL for the subpage with the card's details as query parameters
             let subPageUrl = `../WebFinal/views/subpage.html?title=${encodeURIComponent(
                 title
-            )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(image)}`;
+            )}&description=${encodeURIComponent(description)}&image=${encodeURIComponent(imagesrc)}`;
             // Navigate to the subpage
             window.location.href = subPageUrl;
         });
